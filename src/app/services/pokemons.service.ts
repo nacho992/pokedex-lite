@@ -7,6 +7,7 @@ import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { EnvolvesToChain } from '../models/EvolvesTo.interface';
 import { EvolutionQuery } from '../models/EvolutionQuery.interface';
+import { PokemonSpecies } from '../models/PokemonSpecies.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,15 +33,21 @@ export class PokemonsService {
     return this.http.get<PokemonDetail>(this.baseUrl + 'pokemon/' + pokemon);
   }
 
-  public getPokemonEvolvesTo(pokemon: number): Observable<EnvolvesToChain> {
+  public getPokemonEvolvesTo(pokemon: string): Observable<EnvolvesToChain> {
     return this.http.get<EnvolvesToChain>(
-      this.baseUrl + 'evolution-chain/' + pokemon
+       pokemon
     );
   }
 
-  public getPokemonEvolution(pokemon: number): Observable<EvolutionQuery> {
+  public getPokemonEvolution(pokemon: number | string): Observable<EvolutionQuery> {
     return this.http.get<EvolutionQuery>(
       this.baseUrl + 'pokemon-species/' + pokemon
+    );
+  }
+
+  public getPokemonSpecies(pokemon: string): Observable<PokemonSpecies> {
+    return this.http.get<PokemonSpecies>(
+      pokemon
     );
   }
 }

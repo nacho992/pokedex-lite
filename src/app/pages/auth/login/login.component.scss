@@ -36,7 +36,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-/* TABS */
 
 h2.inactive {
   color: #cccccc;
@@ -47,14 +46,11 @@ h2.active {
   border-bottom: 2px solid #e95f5f;
 }
 
-/* FORM TYPOGRAPHY*/
-
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
   background-color: #ed5656;
   border: none;
-  //color: white;
   padding: 15px 80px;
   text-align: center;
   text-decoration: none;

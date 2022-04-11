@@ -25,6 +25,17 @@ li {
   color: red;
 }
 
+/* Button back */
+.btn-back {
+  z-index: 2;
+  margin: 5px 5px 5px 5px;
+  color: #ffffff;
+  border: none;
+  background-color: #ff0000;
+  border-radius: 12px;
+  width: 64px;
+  height: 37px;
+}
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */

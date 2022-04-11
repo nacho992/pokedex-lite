@@ -57,6 +57,7 @@ export class CreateEditFormComponent implements OnInit {
 
   private setData(): void{
     const poke: PokemonDetail = {
+      species: {name: '', url: ''},
       sprites: { front_default: this.datos.get('sprites')?.value },
       id: this.datos.get('id')?.value,
       name: this.datos.get('name')?.value,

@@ -83,17 +83,6 @@ input:focus + label {
   transform: translate(0, 0) scale(1);
   cursor: pointer;
 }
-
-.btn-back {
-  z-index: 2;
-  margin: 5px 5px 5px 5px;
-  color: #ffffff;
-  border: none;
-  background-color: #ff0000;
-  border-radius: 12px;
-  width: 64px;
-  height: 37px;
-}
 .btn-primary {
   color: #ffffff;
   border: none;
