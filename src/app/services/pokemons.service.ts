@@ -5,28 +5,42 @@ import { PokemonDetail } from '../models/PokemonDetails.interface';
 import { PokemonList } from '../models/PokemonList.interface';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { EnvolvesToChain } from '../models/EvolvesTo.interface';
+import { EvolutionQuery } from '../models/EvolutionQuery.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonsService {
   private baseUrl = environment.API_POKE;
-  private pokemons = new BehaviorSubject<PokemonList[]>([]);
-  public pokemons$ = this.pokemons.asObservable();
+  public pokemonsDetails = new BehaviorSubject<PokemonDetail[]>([]);
+  public pokemonsDetails$ = this.pokemonsDetails.asObservable();
   constructor(private http: HttpClient) {}
 
-  getPokemonList(
+  public getPokemonList(
     offset: number,
-    limit: number = 20
+    limit: number = 40
   ): Observable<PokemonList[]> {
     return this.http
       .get<PokemonList[]>(
         this.baseUrl + 'pokemon?offset=' + offset + '&limit=' + limit
       )
-      .pipe(map((x: any) => x.results), tap((pokes) => this.pokemons.next(pokes)));
+      .pipe(map((x: any) => x.results));
   }
 
-  getPokemonDetail(pokemon: number | string): Observable<PokemonDetail> {
+  public getPokemonDetail(pokemon: number | string): Observable<PokemonDetail> {
     return this.http.get<PokemonDetail>(this.baseUrl + 'pokemon/' + pokemon);
+  }
+
+  public getPokemonEvolvesTo(pokemon: number): Observable<EnvolvesToChain> {
+    return this.http.get<EnvolvesToChain>(
+      this.baseUrl + 'evolution-chain/' + pokemon
+    );
+  }
+
+  public getPokemonEvolution(pokemon: number): Observable<EvolutionQuery> {
+    return this.http.get<EvolutionQuery>(
+      this.baseUrl + 'pokemon-species/' + pokemon
+    );
   }
 }

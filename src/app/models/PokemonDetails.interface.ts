@@ -1,15 +1,15 @@
 export interface PokemonDetail {
   id: number;
-  order: number;
+  order?: number;
   base_experience: number;
   name: string;
-  height: number;
-  abilities: Ability[];
-  spices: Species;
-  types: Type[];
-  weight: number;
-  sprites: Sprite;
-  stats: Stat[];
+  height?: number;
+  abilities?: Ability[];
+  spices?: Species;
+  types?: Type[];
+  weight?: number;
+  sprites?: Sprite;
+  stats?: Stat[];
 }
 
 interface Ability {

@@ -1,0 +1,74 @@
+<button (click)="onGoBack()" class="btn-back">Back</button>
+<div class="wrapper">
+  <div id="formContent">
+    <form
+      [formGroup]="datos"
+      (ngSubmit)="edit ? editPokemon() : createPokemon()"
+    >
+    <div class="image">
+      <img *ngIf="datos.get('sprites')?.value" src="{{datos.get('sprites')?.value}}" alt="">
+    </div>
+
+      <div *ngIf="!datos.get('sprites')?.value" class="field">
+        <input
+          formControlName="sprites"
+          type="text"
+          name="sprites"
+          placeholder="http://img.com/img.png"
+          id="sprites"
+        />
+        <small *ngIf="datos.get('sprites')?.invalid" id="sprites" class="p-error block"
+          >Select image url</small>
+        <label for="sprites">Imagen</label>
+      </div>
+
+      <div class="field">
+        <input
+          formControlName="id"
+          type="text"
+          name="id"
+          placeholder="5"
+          id="id"
+        />
+        <small *ngIf="datos.get('id')?.invalid" id="id" class="p-error block"
+          >ID must be unique</small>
+        <label for="id">ID</label>
+      </div>
+
+      <div class="field">
+        <input
+          formControlName="name"
+          type="text"
+          name="name"
+          id="name"
+        />
+        <small *ngIf="datos.get('name')?.invalid" id="name" class="p-error block"
+          >**</small>
+        <label for="name">Name</label>
+      </div>
+
+      <div class="field">
+        <input
+          formControlName="type"
+          name="type"
+          id="type"
+        />
+        <small *ngIf="datos.get('type')?.invalid" id="type" class="p-error block"
+          >**</small>
+        <label for="type">Type</label>
+      </div>
+
+      <div class="field">
+        <input
+          formControlName="lvl"
+          name="lvl"
+          id="lvl"
+        />
+        <small *ngIf="datos.get('lvl')?.invalid" id="lvl" class="p-error block"
+          >**</small>
+        <label for="lvl">Level</label>
+      </div>
+      <button [disabled]="datos.invalid" type="submit" class="btn-primary">{{ title }}</button>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
 import { PokemonList } from 'src/app/models/PokemonList.interface';
@@ -14,25 +15,24 @@ export class HomeComponent implements OnInit {
   public isLoading: boolean = false;
   public pokemons: PokemonDetail[] = [];
   public isLastPage = false;
+  public showButton = false
 
-  constructor(private pokemonService: PokemonsService) {
+  constructor(private pokemonService: PokemonsService, @Inject(DOCUMENT) private document: Document) {
     this.offset = 0;
   }
 
   ngOnInit(): void {
-    this.getPage(this.offset);
-    this.pokemonService.pokemons$.subscribe((pokes) => {
-      this.getPokemon(pokes);
-      console.log(pokes);
+    this.pokemonService.pokemonsDetails$.subscribe((pokes) => {
+      this.pokemons = pokes;
+      if (!pokes.length) {
+        this.getPage(this.offset);
+      }
     });
-  }
-
-  openDialog(id: number, message: string) {
-    console.log(message);
   }
 
   deleteItem(id: number) {
     this.pokemons = this.pokemons.filter((val) => val.id !== id);
+    this.pokemonService.pokemonsDetails.next(this.pokemons)
   }
 
   getPage(offset: number) {
@@ -51,13 +51,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onScroll(event: Event): void {
-    const element: HTMLDivElement = event.target as HTMLDivElement;
-    if (element.scrollHeight - element.scrollTop < 1000) {
-      this.getPage(this.offset);
-    }
-  }
-
   private getPokemon(list: PokemonList[]) {
     const arr: Observable<PokemonDetail>[] = [];
     list.map((value: PokemonList) => {
@@ -68,7 +61,33 @@ export class HomeComponent implements OnInit {
       this.pokemons.push(...pokemons);
       this.offset += 20;
       this.isLoading = false;
+      this.pokemonService.pokemonsDetails.next(this.pokemons);
     });
   }
 
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const yOffSet = window.pageYOffset;
+    if (
+      (yOffSet ||
+        this.document.documentElement.scrollTop ||
+        this.document.body.scrollTop) > 20
+    ) {
+      this.showButton = true;
+    } else if (
+      this.showButton &&
+      (yOffSet ||
+        this.document.documentElement.scrollTop ||
+        this.document.body.scrollTop) < 20
+    ) {
+      this.showButton = false;
+    }
+  }
+
+  onScrollTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }

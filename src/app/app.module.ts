@@ -9,9 +9,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateEditFormComponent } from './pages/create-edit-form/create-edit-form.component';
+import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavBarComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, NavBarComponent, LoginComponent, CreateEditFormComponent, PokemonDetailsComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

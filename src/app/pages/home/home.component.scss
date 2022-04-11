@@ -34,7 +34,7 @@
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       z-index: 1;
       img {
-        max-width: 100%;
+        max-width: 100px;
         border-radius: 15px;
       }
       .types {
@@ -65,7 +65,7 @@ button {
   color: #fff;
   border-radius: 12px;
   margin-top: 80px;
-  background-color: #ed5656;
+  background-color: red;
   border: none;
   padding: 15px 80px;
   margin-left: 20px;
@@ -78,3 +78,12 @@ button {
     background-color: #e73939;
   }
 }
+
+.btn-scrollTop {
+  width: 25px;
+  padding: 6px 52px 2px 6px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50px;
+  }

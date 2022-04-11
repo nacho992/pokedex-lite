@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container fadeIn first">
+  <button [routerLink]="['/form-poke', 0]" >New Pokemon</button>
   <div class="card" *ngFor="let pokemon of pokemons">
     <div class="image">
       <img [src]="pokemon.sprites?.front_default" [alt]="pokemon.name" />
@@ -10,11 +11,7 @@
       <label>
         <span>Types</span>
         <div class="types">
-          <h5
-            *ngFor="let type of pokemon.types"
-          >
-            {{ type.type.name }},
-          </h5>
+          <h5 *ngFor="let type of pokemon.types">{{ type.type.name }},</h5>
         </div>
       </label>
 
@@ -25,8 +22,27 @@
     </div>
 
     <div class="content">
-      <button type="button">Edit</button>
-      <button type="button">Delete</button>
+      <button [routerLink]="['/form-poke', pokemon.id]" type="button">Edit</button>
+      <button (click)="deleteItem(pokemon.id)" type="button">Delete</button>
+      <button [routerLink]="['/pokemon-details', pokemon.id]" >view more</button>
+
     </div>
   </div>
 </div>
+
+<button (click)="onScrollTop()" *ngIf="showButton" class="btn-scrollTop">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="45"
+    height="45"
+    fill="currentColor"
+    class="bi bi-arrow-up-circle"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"
+    />
+  </svg>
+</button>
+
