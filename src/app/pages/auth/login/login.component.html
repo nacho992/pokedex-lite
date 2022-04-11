@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../../../assets/Poké_Ball_icon.svg.png" id="icon" alt="User Icon" />
+        <h3>Login</h3>
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="datos" (ngSubmit)="signIn()">
+        <div class="alert-danger" *ngIf="datos.get('username')?.invalid && (datos.get('username')?.touched || datos.get('username')?.dirty)">
+            <div class="error-menssage">
+                invalid username
+            </div>
+        </div>
+        <input type="text" id="login" class="fadeIn second" formControlName="username" name="username" placeholder="username">
+        <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>

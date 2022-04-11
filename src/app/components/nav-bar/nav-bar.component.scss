@@ -29,8 +29,9 @@
       .dropBox {
         position: relative;
         .dropdown {
-          background-color: rgb(255, 3, 3);
-          padding: 1em 0;
+          padding: 0;
+          z-index: 2;
+          background-color: rgb(197, 8, 8);
           position: absolute; /*WITH RESPECT TO PARENT*/
           display: none;
           border-radius: 8px;
@@ -39,6 +40,10 @@
             padding: 0.5em 1em;
             width: 8em;
             text-align: center;
+            img{
+              width: 40px;
+              margin-right: 5px;
+            }
           }
           li + li {
             margin-top: 10px;
@@ -85,6 +90,8 @@ input[type="checkbox"] {
         padding: 16px;
       }
       .menu {
+        z-index: 2;
+        box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
         display: none;
         position: absolute;
         background-color: red;
