@@ -22,4 +22,9 @@ export class AuthService {
     this.loggendIn.next(true)
     return this.isLogged
   }
+
+  public logout(){
+    this.loggendIn.next(false);
+    localStorage.setItem('USER LOG', '');
+  }
 }

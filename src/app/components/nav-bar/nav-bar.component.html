@@ -1,21 +1,28 @@
 <nav class="navbar">
-  <!-- LOGO -->
   <div class="logo">
-      <img src="../../../assets/Poké_Ball_icon.svg.png" alt="">
+    <img src="../../../assets/Poké_Ball_icon.svg.png" alt="" />
   </div>
-  <!-- NAVIGATION MENU -->
   <ul class="nav-links">
-    <!-- USING CHECKBOX HACK -->
     <input type="checkbox" id="checkbox_toggle" />
     <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-    <!-- NAVIGATION MENUS -->
     <div class="menu">
-      <li><a [routerLink]="['home']">Home</a></li>
+      <li>
+        <a [routerLink]="['home']">Home</a>
+      </li>
       <li class="dropBox">
-        <a>About</a>
+        <a>More</a>
         <!-- DROPDOWN MENU -->
         <ul class="dropdown">
-          <li><img src="../../../assets/github.svg" alt=""><a href="https://github.com/nacho992/pokedex-lite">GitHub</a></li>
+          <li>
+            <img src="../../../assets/github.svg" alt="" /><a
+              href="https://github.com/nacho992/pokedex-lite"
+              >GitHub</a
+            >
+          </li>
+          <li (click)="logOut()">
+            <img src="../../../assets/bag-x-fill.svg" alt="" />
+            <a>LogOut</a>
+          </li>
         </ul>
       </li>
     </div>

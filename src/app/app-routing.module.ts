@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { CreateEditFormComponent } from './pages/create-edit-form/create-edit-form.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -24,12 +26,14 @@ const routes: Routes = [
   {
     path: 'form-poke/:id',
     component: CreateEditFormComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'pokemon-details/:id',
     component: PokemonDetailsComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   }
   
 ];

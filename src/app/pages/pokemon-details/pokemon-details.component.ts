@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
 
 interface evolvesObject {
   name: string;
@@ -34,7 +33,6 @@ export class PokemonDetailsComponent implements OnInit {
         .getPokemonDetail(this.id)
         .subscribe((pokemonDetails) => {
           this.pokemon.next(pokemonDetails)
-          console.log(this.pokemon.value);
           this.pokemonService
             .getPokemonSpecies(pokemonDetails.species?.url)
             .subscribe((PokeSpecie) => {
