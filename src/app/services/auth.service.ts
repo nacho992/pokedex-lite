@@ -11,7 +11,9 @@ export class AuthService {
     false
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { 
+    this.checkUser()
+  }
 
   public get isLogged(): Observable<boolean> {
     return this.loggendIn.asObservable();
@@ -26,5 +28,13 @@ export class AuthService {
   public logout(){
     this.loggendIn.next(false);
     localStorage.setItem('USER LOG', '');
+  }
+
+  private checkUser(){
+    if (!localStorage.getItem('USER LOG')) {
+      this.loggendIn.next(false)
+    }else{
+      this.loggendIn.next(true)
+    }
   }
 }
