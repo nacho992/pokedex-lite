@@ -15,20 +15,24 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    pathMatch: 'full',
     canActivate: [AuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
   },
   {
     path: 'form-poke/:id',
     component: CreateEditFormComponent,
+    pathMatch: 'full',
     canActivate: [AuthGuard]
   },
   {
     path: 'pokemon-details/:id',
     component: PokemonDetailsComponent,
+    pathMatch: 'full',
     canActivate: [AuthGuard]
   }
   
