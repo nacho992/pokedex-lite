@@ -12,12 +12,12 @@
       <form [formGroup]="datos" (ngSubmit)="signIn()">
         <div class="alert-danger" *ngIf="datos.get('username')?.invalid && (datos.get('username')?.touched || datos.get('username')?.dirty)">
             <div class="error-menssage">
-                invalid username
+                invalid email
             </div>
         </div>
         <input type="text" id="login" class="fadeIn second" formControlName="username" name="username" placeholder="username">
         <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input type="submit" class="fadeIn fourth" value="Log In" [disabled]="datos.invalid">
       </form>
   
       <!-- Remind Passowrd -->

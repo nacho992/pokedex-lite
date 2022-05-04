@@ -83,6 +83,11 @@ input:focus + label {
   transform: translate(0, 0) scale(1);
   cursor: pointer;
 }
+
+.btn-back {
+  margin-left: 22px;
+  margin-right: 375px;
+}
 .btn-primary {
   color: #ffffff;
   border: none;
@@ -91,8 +96,9 @@ input:focus + label {
   width: 64px;
   height: 37px;
 }
+
 .btn-primary:disabled,
-.btn-primarybutton[disabled]{
+.btn-primarybutton[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

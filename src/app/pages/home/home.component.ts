@@ -15,13 +15,20 @@ export class HomeComponent implements OnInit {
   public isLoading: boolean = false;
   public pokemons: PokemonDetail[] = [];
   public isLastPage = false;
-  public showButton = false
+  public showButton = false;
 
-  constructor(private pokemonService: PokemonsService, @Inject(DOCUMENT) private document: Document) {
+  constructor(
+    private pokemonService: PokemonsService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     this.offset = 0;
   }
 
   ngOnInit(): void {
+    this.getPokemons();
+  }
+
+  private getPokemons(){
     this.pokemonService.pokemonsDetails$.subscribe((pokes) => {
       this.pokemons = pokes;
       if (!pokes.length) {
@@ -30,12 +37,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  deleteItem(id: number) {
+  public deleteItem(id: number) {
     this.pokemons = this.pokemons.filter((val) => val.id !== id);
-    this.pokemonService.pokemonsDetails.next(this.pokemons)
+    this.pokemonService.pokemonsDetails.next(this.pokemons);
   }
 
-  getPage(offset: number) {
+  private getPage(offset: number) {
     if (!this.isLoading && !this.isLastPage) {
       this.isLoading = true;
       this.pokemonService
@@ -66,7 +73,7 @@ export class HomeComponent implements OnInit {
   }
 
   @HostListener('window:scroll', [])
-  onWindowScroll(): void {
+  public onWindowScroll(): void {
     const yOffSet = window.pageYOffset;
     if (
       (yOffSet ||
@@ -84,10 +91,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onScrollTop(): void {
+  public onScrollDown(){
+    if (!this.isLastPage) {
+      this.offset++
+      this.getPage(this.offset);
+    }
+  }
+
+  public onScrollTop(): void {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
+      behavior: 'smooth',
+    });
   }
 }
