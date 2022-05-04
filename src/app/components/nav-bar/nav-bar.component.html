@@ -19,7 +19,7 @@
               >GitHub</a
             >
           </li>
-          <li (click)="logOut()">
+          <li *ngIf="loged" (click)="logOut()">
             <img src="../../../assets/bag-x-fill.svg" alt="" />
             <a>LogOut</a>
           </li>

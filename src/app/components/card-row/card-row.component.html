@@ -1,0 +1,31 @@
+<section class="container">
+  <div class="card">
+    <div class="image">
+      <img [src]="pokemon.sprites?.front_default" [alt]="pokemon.name" />
+      <label>
+        <span>Name</span>
+        <h3 class="color-white">{{ pokemon.name }}</h3>
+      </label>
+
+      <label>
+        <span>Types</span>
+        <div class="types">
+          <h5 *ngFor="let type of pokemon.types">{{ type.type.name }},</h5>
+        </div>
+      </label>
+
+      <label>
+        <span> Lvl </span>
+        <h4>{{ pokemon.base_experience }}</h4>
+      </label>
+    </div>
+
+    <div class="content">
+      <button [routerLink]="['/form-poke', pokemon.id]" type="button">
+        Edit
+      </button>
+      <button (click)="deleteItem(pokemon.id)" type="button">Delete</button>
+      <button [routerLink]="['/pokemon-details', pokemon.id]">view more</button>
+    </div>
+  </div>
+</section>

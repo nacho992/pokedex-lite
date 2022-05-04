@@ -11,9 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateEditFormComponent } from './pages/create-edit-form/create-edit-form.component';
 import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details.component';
+import { CardRowComponent } from './components/card-row/card-row.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavBarComponent, LoginComponent, CreateEditFormComponent, PokemonDetailsComponent],
+  declarations: [AppComponent, HomeComponent, NavBarComponent, LoginComponent, CreateEditFormComponent, PokemonDetailsComponent, CardRowComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -21,6 +23,7 @@ import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent],

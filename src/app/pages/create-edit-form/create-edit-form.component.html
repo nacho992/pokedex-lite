@@ -1,5 +1,5 @@
-<button (click)="onGoBack()" class="btn-back">Back</button>
 <div class="wrapper">
+  <button (click)="onGoBack()" class="btn-back">Back</button>
   <div id="formContent">
     <form
       [formGroup]="datos"
@@ -22,7 +22,7 @@
         <label for="sprites">Imagen</label>
       </div>
 
-      <div class="field">
+      <div *ngIf="!edit" class="field">
         <input
           formControlName="id"
           type="text"
