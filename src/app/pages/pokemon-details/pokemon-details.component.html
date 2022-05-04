@@ -1,17 +1,12 @@
-<button (click)="onGoBack()" class="btn-back">Back</button>
 <details class="evolve-select">
   <summary class="radios">
-    <input
-      type="radio"
-      title="Evolves to...   "
-      checked
-    />
+    <input type="radio" title="Evolves to...   " checked />
     <input
       *ngFor="let evolves of evolveslinks"
       (click)="selectEvolved(input.value)"
       #input
       type="radio"
-      value="{{evolves.name}}"
+      value="{{ evolves.name }}"
       name="item"
       id="{{ evolves.name }}"
       title="{{ evolves.name }}"
@@ -24,23 +19,27 @@
   </ul>
 </details>
 
-<section>
-    <div *ngIf="pokemon$ | async as poke"  class="column-6 push-1">
-        <h3>{{poke.name}}</h3>
-        <div class="pokedex-pokemon-profile">
-            <div class="profile-images">
-                <img src="{{poke.sprites.front_default}}" alt="">
-                
-            </div>
-        </div>
+<section *ngIf="pokemon$ | async as poke" [ngStyle]="{'background-color': colorPoke}">
+  <button (click)="onGoBack()" class="btn-back">Back</button>
+  <div class="column-6 push-1">
+    <h3>{{ poke.name }}</h3>
+    <div class="pokedex-pokemon-profile">
+      <div class="profile-images">
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+            poke.id
+          }}.png"
+          alt=""
+        />
+      </div>
     </div>
-    <div *ngIf="pokemon$ | async as poke" class="column-6 push-7">
-        <h3>Abilities</h3>
-        <p *ngFor="let abilitie of poke.abilities">{{abilitie.ability.name}}</p>
-        <h3>Weight</h3>
-        <p>{{poke.weight}}</p>
-        <h3>Height</h3>
-        <p>{{poke.height}}</p>
-    </div>
-    
+  </div>
+  <div *ngIf="pokemon$ | async as poke" class="column-6 push-7">
+    <h3>Abilities</h3>
+    <p *ngFor="let abilitie of poke.abilities">{{ abilitie.ability.name }}</p>
+    <h3>Weight</h3>
+    <p>{{ poke.weight }}</p>
+    <h3>Height</h3>
+    <p>{{ poke.height }}</p>
+  </div>
 </section>
