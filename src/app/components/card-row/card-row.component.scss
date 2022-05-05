@@ -6,7 +6,7 @@
   padding: 0.5rem;
   .card {
     position: relative;
-    height: 108px;
+    height: 225px;
     background-color: #fff;
     margin: 30px 10px;
     padding: 20px 15px;
@@ -17,7 +17,7 @@
     transition: 0.3s ease-in-out;
     border-radius: 15px;
     &:hover {
-      height: 120px;
+      height: 250px;
       .content {
         margin-top: 50px;
         visibility: visible;
@@ -30,11 +30,11 @@
       display: flex;
       position: relative;
       border-radius: 12px;
-      top: -23%;
+      top: -5%;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       z-index: 1;
       img {
-        max-width: 100px;
+        max-width: 200px;
         border-radius: 15px;
       }
       .types {
@@ -97,17 +97,99 @@ button {
     color: red;
   }
 }
-@media screen and (max-width: 872px) {
+@media (max-width: 440px) {
   .container{
+    display: block;
     .card{
-      height: 106px;
+      height: 670px;
       background-color: #fff;
-      margin: 24px -12px;
-      padding: 20px 1px;
+      &:hover {
+        height: 700px;
+        .content {
+          margin-top: 75px;
+          visibility: visible;
+          opacity: 1;
+          transition-delay: 0.2s;
+        }
+      }
+      .image {
+        justify-content: space-between;
+        display: block;
+        text-align: center;
+        position: relative;
+        border-radius: 12px;
+        top: 0%;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        img {
+          max-width: 100%;
+          border-radius: 15px;
+        }
+        .types {
+          justify-content: center;
+          display: flex;
+        }
+        span {
+          color: red;
+        }
+        label {
+          padding-right: 0px;
+        }
+      }
     }
   }
   button {
-    padding: 12px 12px;
+    padding: 11px 13px;
+    margin: inherit;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 440px) and (max-width: 768px) {
+  .container{
+    display: block;
+    .card{
+      height: 775px;
+      background-color: #fff;
+      &:hover {
+        height: 800px;
+        .content {
+          margin-top: 55px;
+          margin: 55px 5px 0px 8px;
+          visibility: visible;
+          opacity: 1;
+          transition-delay: 0.2s;
+        }
+      }
+      .image {
+        justify-content: space-between;
+        display: block;
+        text-align: center;
+        position: relative;
+        border-radius: 12px;
+        top: 0%;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        img {
+          max-width: 100%;
+          border-radius: 15px;
+        }
+        .types {
+          justify-content: center;
+          display: flex;
+        }
+        span {
+          color: red;
+        }
+        label {
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+  button {
+    padding: 11px 13px;
+    margin: inherit;
     font-size: 12px;
   }
 }
