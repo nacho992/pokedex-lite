@@ -174,3 +174,9 @@ section {
   border-radius: 25%;
   background-color: white;
 }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .btn-back {
+    width: 40px;
+  }
+}

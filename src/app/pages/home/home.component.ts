@@ -4,11 +4,14 @@ import { Observable, forkJoin } from 'rxjs';
 import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
 import { PokemonList } from 'src/app/models/PokemonList.interface';
 import { PokemonsService } from 'src/app/services/pokemons.service';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [MessageService],
 })
 export class HomeComponent implements OnInit {
   private offset: number;
@@ -19,7 +22,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonsService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private messageService: MessageService
   ) {
     this.offset = 0;
   }
@@ -28,9 +32,9 @@ export class HomeComponent implements OnInit {
     this.getPokemons();
   }
 
-  private getPokemons(){
+  private getPokemons() {
     this.pokemonService.pokemonsDetails$.subscribe((pokes) => {
-      this.pokemons = pokes;
+      this.pokemons = [...pokes];
       if (!pokes.length) {
         this.getPage(this.offset);
       }
@@ -40,6 +44,11 @@ export class HomeComponent implements OnInit {
   public deleteItem(id: number) {
     this.pokemons = this.pokemons.filter((val) => val.id !== id);
     this.pokemonService.pokemonsDetails.next(this.pokemons);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Confirmed',
+      detail: 'Deleted pokemon',
+    });
   }
 
   private getPage(offset: number) {
@@ -91,9 +100,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public onScrollDown(){
+  public onScrollDown() {
     if (!this.isLastPage) {
-      this.offset++
+      this.offset++;
       this.getPage(this.offset);
     }
   }

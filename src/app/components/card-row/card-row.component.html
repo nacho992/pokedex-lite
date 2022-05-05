@@ -24,8 +24,11 @@
       <button [routerLink]="['/form-poke', pokemon.id]" type="button">
         Edit
       </button>
-      <button (click)="deleteItem(pokemon.id)" type="button">Delete</button>
+      <button (click)="confirm()" icon="pi pi-times" type="button">Delete</button>
       <button [routerLink]="['/pokemon-details', pokemon.id]">view more</button>
     </div>
   </div>
 </section>
+
+<p-confirmDialog [style]="{width: '50vw'}" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast [showTransformOptions]="'translateX(100%)'"></p-toast>

@@ -103,3 +103,9 @@ input:focus + label {
   background-color: #cccccc;
   color: #666666;
 }
+/* 320px — 480px: Mobile devices; 481px — 768px: iPads, Tablets*/
+@media (min-width: 320px) and (max-width: 768px) {
+  .btn-back {
+    margin-left: 135px;
+  }
+}

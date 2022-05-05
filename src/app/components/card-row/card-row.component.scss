@@ -3,10 +3,10 @@
   max-width: 1200px;
   margin: auto;
   display: block;
-  padding: 0rem;
+  padding: 0.5rem;
   .card {
     position: relative;
-    height: 65px;
+    height: 108px;
     background-color: #fff;
     margin: 30px 10px;
     padding: 20px 15px;
@@ -79,9 +79,35 @@ button {
   }
 }
 
+::ng-deep {
+  .p-confirm-dialog-accept.p-ripple.p-button {
+    background: red;
+    border: none;
+  }
+  .p-confirm-dialog-accept.p-ripple.p-button:focus {
+    border: 1px solid red;
+  }
+  .p-confirm-dialog-accept.p-ripple.p-button:hover {
+    background: rgb(255, 69, 69);
+  }
+  .p-button.p-button-text{
+    color: #111;
+  }
+  .p-button.p-button-text:hover{
+    color: red;
+  }
+}
 @media screen and (max-width: 872px) {
+  .container{
+    .card{
+      height: 106px;
+      background-color: #fff;
+      margin: 24px -12px;
+      padding: 20px 1px;
+    }
+  }
   button {
-    padding: 10px 18px;
+    padding: 12px 12px;
     font-size: 12px;
   }
 }

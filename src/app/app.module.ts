@@ -13,9 +13,20 @@ import { CreateEditFormComponent } from './pages/create-edit-form/create-edit-fo
 import { PokemonDetailsComponent } from './pages/pokemon-details/pokemon-details.component';
 import { CardRowComponent } from './components/card-row/card-row.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavBarComponent, LoginComponent, CreateEditFormComponent, PokemonDetailsComponent, CardRowComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavBarComponent,
+    LoginComponent,
+    CreateEditFormComponent,
+    PokemonDetailsComponent,
+    CardRowComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -23,7 +34,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ConfirmDialogModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

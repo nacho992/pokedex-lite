@@ -1,7 +1,10 @@
 <div class="fadeIn first" infinite-scroll (scrolled)="onScrollDown()">
   <button [routerLink]="['/form-poke', 0]">Add a New Pokemon</button>
   <div *ngFor="let pokemon of pokemons">
-    <app-card-row [pokemon]="pokemon"></app-card-row>
+    <app-card-row
+      [pokemon]="pokemon"
+      (deleteEvent)="deleteItem($event)"
+    ></app-card-row>
   </div>
 </div>
 
@@ -20,3 +23,4 @@
     />
   </svg>
 </button>
+<p-toast [showTransformOptions]="'translateX(100%)'"></p-toast>
