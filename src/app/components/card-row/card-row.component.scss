@@ -115,10 +115,10 @@ button {
   .container {
     display: block;
     .card {
-      height: 670px;
+      height: 706px;
       background-color: #fff;
       &:hover {
-        height: 700px;
+        height: 830px;
         .content {
           margin-top: 75px;
           visibility: visible;
@@ -168,8 +168,7 @@ button {
       &:hover {
         height: 800px;
         .content {
-          margin-top: 55px;
-          margin: 55px 5px 0px 8px;
+          margin: 72px 5px 0px 8px;
           visibility: visible;
           opacity: 1;
           transition-delay: 0.2s;
