@@ -1,10 +1,25 @@
 <section class="header-details">
-  <div class="column-header"> 
-    <button [ngStyle]="{'background-color': colorPoke, 'box-shadow': '0 0 20px' + colorPoke}" (click)="onGoBack()" class="btn-back">Back</button>
+  <div class="column-header">
+    <button
+      [ngStyle]="{
+        'background-color': colorPoke,
+        'box-shadow': '0 0 20px' + colorPoke
+      }"
+      (click)="onGoBack()"
+      class="btn-back"
+    >
+      <i class="pi pi-arrow-left"></i> Back
+    </button>
   </div>
 
   <details class="evolve-select">
-    <summary class="radios" [ngStyle]="{'background-color': colorPoke, 'box-shadow': '0 0 20px' + colorPoke}">
+    <summary
+      class="radios"
+      [ngStyle]="{
+        'background-color': colorPoke,
+        'box-shadow': '0 0 20px' + colorPoke
+      }"
+    >
       <input type="radio" title="Evolves to...   " checked />
       <input
         *ngFor="let evolves of evolveslinks"
@@ -23,10 +38,18 @@
       </li>
     </ul>
   </details>
-  
 </section>
 
-<section class="container-poke fadeIn first" *ngIf="pokemon$ | async as poke"  [ngStyle]="{'background': ' linear-gradient(8deg, ' + colorPoke + ' 0%, rgba(235, 235, 235, 0) 35%, rgb(0 212 255 / 0%) 100%)'}">
+<section
+  class="container-poke fadeIn first"
+  *ngIf="pokemon$ | async as poke"
+  [ngStyle]="{
+    background:
+      ' linear-gradient(8deg, ' +
+      colorPoke +
+      ' 0%, rgba(235, 235, 235, 0) 35%, rgb(0 212 255 / 0%) 100%)'
+  }"
+>
   <div class="column">
     <h1>{{ poke.name }}</h1>
     <div class="pokedex-pokemon-profile">
@@ -66,12 +89,24 @@
       <tr>
         <td><h3>Types</h3></td>
         <td class="td-flex">
-          <p [ngStyle]="{'background-color': getColorByType(type.type.name), 'box-shadow': '0 0 20px' + getColorByType(type.type.name)}" *ngFor="let type of poke.types">{{ type.type.name }}<img
-            [ngStyle]="{'background-color': getColorByType(type.type.name), 'box-shadow': '0 0 20px' + getColorByType(type.type.name)}"
-            class="icon-type"
-            src="../../../assets/icons-types/{{ type.type.name }}.svg"
-            alt=""
-          /></p>
+          <p
+            [ngStyle]="{
+              'background-color': getColorByType(type.type.name),
+              'box-shadow': '0 0 20px' + getColorByType(type.type.name)
+            }"
+            *ngFor="let type of poke.types"
+          >
+            {{ type.type.name
+            }}<img
+              [ngStyle]="{
+                'background-color': getColorByType(type.type.name),
+                'box-shadow': '0 0 20px' + getColorByType(type.type.name)
+              }"
+              class="icon-type"
+              src="../../../assets/icons-types/{{ type.type.name }}.svg"
+              alt=""
+            />
+          </p>
         </td>
       </tr>
     </table>

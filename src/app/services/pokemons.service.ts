@@ -15,12 +15,13 @@ import { PokemonSpecies } from '../models/PokemonSpecies.interface';
 export class PokemonsService {
   private baseUrl = environment.API_POKE;
   public pokemonsDetails = new BehaviorSubject<PokemonDetail[]>([]);
+  public offsetSubject = new BehaviorSubject<number>(0);
   public pokemonsDetails$ = this.pokemonsDetails.asObservable();
   constructor(private http: HttpClient) {}
 
   public getPokemonList(
     offset: number,
-    limit: number = 40
+    limit: number = 10
   ): Observable<PokemonList[]> {
     return this.http
       .get<PokemonList[]>(
@@ -48,6 +49,12 @@ export class PokemonsService {
   public getPokemonSpecies(pokemon: string): Observable<PokemonSpecies> {
     return this.http.get<PokemonSpecies>(
       pokemon
+    );
+  }
+
+  public getSearchPokemons(pokemon: string): Observable<PokemonDetail> {
+    return this.http.get<PokemonDetail>(
+      this.baseUrl + 'pokemon/' + pokemon
     );
   }
 }

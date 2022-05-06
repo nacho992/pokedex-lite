@@ -1,6 +1,14 @@
-button {
+.container-flex {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
   margin: auto;
-  display: block;
+}
+.options {
+  flex: 1 1 150px;
+  text-align: end;
+}
+button {
   color: #fff;
   border-radius: 14px;
   margin-top: 80px;
@@ -23,4 +31,15 @@ button {
   bottom: 20px;
   right: 20px;
   border-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  button {
+    width: 60px;
+    height: 60px;
+    background: #e73939;
+    line-height: 40px;
+    padding: 10px;
+    border-radius: 60px;
+  }
 }

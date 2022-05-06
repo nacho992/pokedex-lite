@@ -1,5 +1,11 @@
+<section class="container-flex">
+  <div class="options">
+    <button [routerLink]="['/form-poke', 0]">Add a New Pokemon</button>
+    <app-input-search (searched)="search($event)"></app-input-search>
+  </div>
+</section>
+
 <div class="fadeIn first" infinite-scroll (scrolled)="onScrollDown()">
-  <button [routerLink]="['/form-poke', 0]">Add a New Pokemon</button>
   <div *ngFor="let pokemon of pokemons">
     <app-card-row
       [pokemon]="pokemon"

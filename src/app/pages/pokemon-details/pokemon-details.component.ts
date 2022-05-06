@@ -40,6 +40,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   public selectEvolved(item: any): void {
     this.pokemonService.getPokemonDetail(item).subscribe((res) => {
+      this.setColorByType(res);
       this.pokemon.next(res);
     });
   }

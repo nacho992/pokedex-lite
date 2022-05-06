@@ -5,6 +5,7 @@ import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
 import { PokemonList } from 'src/app/models/PokemonList.interface';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { MessageService } from 'primeng/api';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -35,7 +36,9 @@ export class HomeComponent implements OnInit {
   private getPokemons() {
     this.pokemonService.pokemonsDetails$.subscribe((pokes) => {
       this.pokemons = [...pokes];
+      this.offset = this.pokemonService.offsetSubject.value
       if (!pokes.length) {
+        this.pokemonService.offsetSubject.next(0)
         this.getPage(this.offset);
       }
     });
@@ -81,6 +84,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  public search(inputSearch: any) {
+    var results$!: Observable<any>;
+    if (inputSearch.length > 3) {
+      //this.spinnerService.show()
+      results$ = this.pokemonService
+        .getSearchPokemons(inputSearch)
+        .pipe(
+          debounceTime(4000),
+        );
+      results$.subscribe((res) => {
+        //this.spinnerService.hide();
+        this.pokemons = [];
+        this.pokemons.push(res)
+        this.pokemonService.pokemonsDetails.next(this.pokemons);
+      });
+    } else {
+      this.getPage(0);
+    }
+  }
+
   @HostListener('window:scroll', [])
   public onWindowScroll(): void {
     const yOffSet = window.pageYOffset;
@@ -102,7 +125,8 @@ export class HomeComponent implements OnInit {
 
   public onScrollDown() {
     if (!this.isLastPage) {
-      this.offset++;
+      this.offset += 10;
+      this.pokemonService.offsetSubject.next(this.offset)
       this.getPage(this.offset);
     }
   }

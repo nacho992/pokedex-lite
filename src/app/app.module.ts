@@ -16,6 +16,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { InputSearchComponent } from './components/input-search/input-search.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToastModule } from 'primeng/toast';
     CreateEditFormComponent,
     PokemonDetailsComponent,
     CardRowComponent,
+    InputSearchComponent,
   ],
   imports: [
     BrowserAnimationsModule,
