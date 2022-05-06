@@ -4,26 +4,11 @@ import { PokemonsService } from 'src/app/services/pokemons.service';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
+import { colors } from 'src/environments/environment';
 
 interface evolvesObject {
   name: string;
   url: string;
-}
-interface Colors  {
-  fire: string;
-  grass: string;
-  electric: string;
-  water: string;
-  ground: string;
-  rock: string;
-  fairy: string;
-  poison: string;
-  bug: string;
-  dragon: string;
-  psychic: string;
-  flying: string;
-  fighting: string;
-  normal: string;
 }
 @Component({
   selector: 'app-pokemon-details',
@@ -31,22 +16,7 @@ interface Colors  {
   styleUrls: ['./pokemon-details.component.scss'],
 })
 export class PokemonDetailsComponent implements OnInit {
-  colors: Colors = {
-    fire: '#FDDFDF',
-    grass: '#DEFDE0',
-    electric: '#FCF7DE',
-    water: '#DEF3FD',
-    ground: '#f4e7da',
-    rock: '#d5d5d4',
-    fairy: '#fceaff',
-    poison: '#98d7a5',
-    bug: '#f8d5a3',
-    dragon: '#97b3e6',
-    psychic: '#eaeda1',
-    flying: '#F5F5F5',
-    fighting: '#E6EØD4',
-    normal: '#F5F5F5',
-  };
+  colors = colors
   public colorPoke: string = '';
   public pokemon: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private id!: number;
@@ -83,6 +53,12 @@ export class PokemonDetailsComponent implements OnInit {
     const poke_types: string[] = res.types.map(type => type.type.name) 
     const type: string = main_types.find(type => poke_types.indexOf(type) > -1 )!
     this.colorPoke = Object.values(this.colors)[Object.keys(this.colors).indexOf(type)]
+  }
+
+  public getColorByType(type: any): string{
+    return Object.values(this.colors)[
+      Object.keys(this.colors).indexOf(type)
+    ];
   }
 
   private getDestailsAndEvolutions(){

@@ -22,7 +22,7 @@ li {
   text-align: center;
 }
 .p-error{
-  color: red;
+  color: #ff0000;
 }
 
 /* Button back */
@@ -30,8 +30,9 @@ li {
   z-index: 2;
   margin: 5px 5px 5px 5px;
   color: #ffffff;
-  border: none;
   background-color: #ff0000;
+  border: none;
+  margin-top: 60px;
   border-radius: 12px;
   width: 64px;
   height: 37px;
@@ -116,9 +117,9 @@ li {
 }
 
 .fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
 .fadeIn.second {

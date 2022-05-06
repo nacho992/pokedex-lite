@@ -40,6 +40,20 @@
       .types {
         justify-content: right;
         display: flex;
+        .icon-type {
+          filter: saturate(400%);
+          border-radius: 100%;
+          height: 50px;
+          width: 50px;
+          margin: 8px;
+          padding: 8px;
+          transition: 200ms all;
+          &:hover {
+            filter: saturate(600%);
+            transform: scale(1.1);
+            cursor: pointer;
+          }
+        }
       }
       span {
         color: red;
@@ -90,17 +104,17 @@ button {
   .p-confirm-dialog-accept.p-ripple.p-button:hover {
     background: rgb(255, 69, 69);
   }
-  .p-button.p-button-text{
+  .p-button.p-button-text {
     color: #111;
   }
-  .p-button.p-button-text:hover{
+  .p-button.p-button-text:hover {
     color: red;
   }
 }
 @media (max-width: 440px) {
-  .container{
+  .container {
     display: block;
-    .card{
+    .card {
       height: 670px;
       background-color: #fff;
       &:hover {
@@ -146,9 +160,9 @@ button {
 }
 
 @media (min-width: 440px) and (max-width: 768px) {
-  .container{
+  .container {
     display: block;
-    .card{
+    .card {
       height: 775px;
       background-color: #fff;
       &:hover {

@@ -1,5 +1,18 @@
-.btn-back {
-  margin-top: auto;
+.header-details {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-size: 100% 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 100%;
+}
+.column-header {
+  flex: 1 1 340px;
+  text-align: start;
+  margin: 25px;
 }
 .evolve-select {
   display: flex;
@@ -9,7 +22,7 @@
   max-width: 1200px;
   margin: auto;
   min-height: 100%;
-  padding: 100px 20px 20px 0px;
+  padding: 65px 20px 20px 0px;
 }
 
 details {
@@ -19,15 +32,13 @@ details {
 }
 
 details[open] {
-  z-index: 1;
+  z-index: 11;
 }
 
 summary {
   padding: 1rem;
   cursor: pointer;
   border-radius: 5px;
-  background-color: rgb(231, 109, 109);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   list-style: none;
 }
 
@@ -132,35 +143,55 @@ label {
   cursor: pointer;
 }
 
-section {
+.container-poke {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   background-size: 100% 1px;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
-  overflow: hidden;
   max-width: 1024px;
   width: 100%;
 }
 
-.push-1 {
-  margin-left: 7.2525%;
-}
-.column-6 {
-  float: left;
-  margin-right: -100%;
-  width: 41.96%;
+.column {
+  flex: 1 1 340px;
   text-align: center;
+  margin: 25px;
 }
-
-.push-7 {
-  margin-left: 50.7825%;
+.column-details {
+  flex: 1 1 340px;
+  text-align: right;
+  margin: 25px;
 }
-
-.column-6 {
-  float: left;
-  margin-right: -100%;
-  width: 41.96%;
+.td-value {
+  text-align: start;
+  padding: 25px;
+}
+.td-flex {
+  display: flex;
+  padding-left: 25px;
+  align-items: flex-end;
+  p {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 7px;
+    .icon-type {
+      filter: saturate(400%);
+      border-radius: 100%;
+      height: 30px;
+      width: 30px;
+      margin: -3px -1px -10px 8px;
+      padding: 8px;
+      transition: 200ms all;
+      &:hover {
+        filter: saturate(600%);
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .pokedex-pokemon-profile .profile-images img.active {
@@ -172,11 +203,10 @@ section {
   width: 100%;
   padding-bottom: 30px;
   border-radius: 25%;
-  background-color: white;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
-  .btn-back {
-    width: 40px;
+  .header-details {
+    flex-wrap: nowrap;
   }
 }
