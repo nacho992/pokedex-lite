@@ -5,6 +5,8 @@
   </div>
 </section>
 
+<app-loading *ngIf="loadingService.loading$ | async"></app-loading>
+
 <div class="fadeIn first" infinite-scroll (scrolled)="onScrollDown()">
   <div *ngFor="let pokemon of pokemons">
     <app-card-row

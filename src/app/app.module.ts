@@ -17,6 +17,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputSearchComponent } from './components/input-search/input-search.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { InputSearchComponent } from './components/input-search/input-search.com
     PokemonDetailsComponent,
     CardRowComponent,
     InputSearchComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserAnimationsModule,

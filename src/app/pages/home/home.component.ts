@@ -5,8 +5,8 @@ import { PokemonDetail } from 'src/app/models/PokemonDetails.interface';
 import { PokemonList } from 'src/app/models/PokemonList.interface';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { MessageService } from 'primeng/api';
-import { debounceTime } from 'rxjs/operators';
-
+import { debounceTime, map, tap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/components/loading/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -20,11 +20,13 @@ export class HomeComponent implements OnInit {
   public pokemons: PokemonDetail[] = [];
   public isLastPage = false;
   public showButton = false;
+  public searchError = false;
 
   constructor(
     private pokemonService: PokemonsService,
     @Inject(DOCUMENT) private document: Document,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public loadingService: LoadingService
   ) {
     this.offset = 0;
   }
@@ -34,11 +36,13 @@ export class HomeComponent implements OnInit {
   }
 
   private getPokemons() {
+    this.loadingService.show();
     this.pokemonService.pokemonsDetails$.subscribe((pokes) => {
       this.pokemons = [...pokes];
-      this.offset = this.pokemonService.offsetSubject.value
+      this.offset = this.pokemonService.offsetSubject.value;
+      this.loadingService.hide()
       if (!pokes.length) {
-        this.pokemonService.offsetSubject.next(0)
+        this.pokemonService.offsetSubject.next(0);
         this.getPage(this.offset);
       }
     });
@@ -57,6 +61,7 @@ export class HomeComponent implements OnInit {
   private getPage(offset: number) {
     if (!this.isLoading && !this.isLastPage) {
       this.isLoading = true;
+      this.loadingService.hide();
       this.pokemonService
         .getPokemonList(offset)
         .subscribe((list: PokemonList[]) => {
@@ -85,20 +90,24 @@ export class HomeComponent implements OnInit {
   }
 
   public search(inputSearch: any) {
-    var results$!: Observable<any>;
     if (inputSearch.length > 3) {
-      //this.spinnerService.show()
-      results$ = this.pokemonService
+      this.loadingService.show();
+      this.pokemonService
         .getSearchPokemons(inputSearch)
-        .pipe(
-          debounceTime(4000),
+        .pipe(debounceTime(1500))
+        .subscribe(
+          (res) => {
+            this.searchError = false;
+            this.loadingService.hide();
+            this.pokemons = [];
+            this.pokemons.push(res);
+            this.pokemonService.pokemonsDetails.next(this.pokemons);
+          },
+          (err) => {
+            this.loadingService.hide();
+            this.searchError = true;
+          }
         );
-      results$.subscribe((res) => {
-        //this.spinnerService.hide();
-        this.pokemons = [];
-        this.pokemons.push(res)
-        this.pokemonService.pokemonsDetails.next(this.pokemons);
-      });
     } else {
       this.getPage(0);
     }
@@ -126,7 +135,7 @@ export class HomeComponent implements OnInit {
   public onScrollDown() {
     if (!this.isLastPage) {
       this.offset += 10;
-      this.pokemonService.offsetSubject.next(this.offset)
+      this.pokemonService.offsetSubject.next(this.offset);
       this.getPage(this.offset);
     }
   }

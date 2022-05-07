@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PokemonDetail } from '../models/PokemonDetails.interface';
 import { PokemonList } from '../models/PokemonList.interface';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { EnvolvesToChain } from '../models/EvolvesTo.interface';
 import { EvolutionQuery } from '../models/EvolutionQuery.interface';

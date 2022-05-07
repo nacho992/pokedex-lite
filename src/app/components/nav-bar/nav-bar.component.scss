@@ -4,9 +4,13 @@
   border-radius: 8px;
   background-color: red;
   color: #fff;
-  margin: auto;
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 24px;
+  width: 96%;
+  transition: all 0.4s ease;;
   .nav-links {
     a {
       color: #fff;
@@ -80,6 +84,7 @@ input[type="checkbox"] {
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;
+    left: 9px;
     .nav-links {
       input[type="checkbox"]:checked ~ .menu {
         display: block;
@@ -119,6 +124,24 @@ input[type="checkbox"] {
   .dropdown li:hover {
     background-color: transparent;
   }
+}
+
+/* NAV-STICKY */
+nav.sticky{
+  padding: 8px 25px 8px 25px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
