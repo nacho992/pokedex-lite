@@ -146,6 +146,12 @@ nav.sticky{
 
 @media (min-width: 320px) and (max-width: 768px) {
   .navbar {
-    margin: 0;
+    width: 92%;
+  }
+  nav.sticky{
+    padding: 8px 25px 8px 25px;
+    width: 100%;
+    left: 0;
+    top: 15px;
   }
 }
